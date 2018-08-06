@@ -33,7 +33,7 @@ def fibo(x):
 			fib.append(1)
 		else:
 			fib.append(fib[i-1]+fib[i-2])
-	return(fib)
+	return fib
 
 fibo(10)
 
