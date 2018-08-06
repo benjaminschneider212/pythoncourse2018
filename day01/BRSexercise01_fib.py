@@ -17,7 +17,7 @@ fib
 
 
 fib=[]
-while len(fib)<11:
+while len(fib)<10:
 	if len(fib)==0 or len(fib)==1:
 		fib.append(1)
 	else:
