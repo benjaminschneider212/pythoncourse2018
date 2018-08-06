@@ -62,9 +62,9 @@ def romanify(num):
 	while num>=500:
 		final.append("D")
 		num-=500
-		if num-400>=0:
-			final.append("CD")
-			num-=400
+	if num-400>=0:
+		final.append("CD")
+		num-=400
 	while num>100:
 		final.append("C"*(num/100))
 		num-=(num/100)*100
@@ -74,9 +74,9 @@ def romanify(num):
 	while num>=50:
 		final.append("L")
 		num-=50
-		if num-40>=0:
-			final.append("XL")
-			num-=40
+	if num-40>=0:
+		final.append("XL")
+		num-=40
 	while num>10:
 		final.append("X"*(num/10))
 		num-=(num/10)*10
@@ -86,9 +86,9 @@ def romanify(num):
 	while num>=5:
 		final.append("V")
 		num-=5
-		if num-4>=0:
-			final.append("IV")
-			num-=4		
+	if num-4>=0:
+		final.append("IV")
+		num-=4
 	while num>1:
 		final.append("I"*(num/1))
 		num-=(num/1)*1
