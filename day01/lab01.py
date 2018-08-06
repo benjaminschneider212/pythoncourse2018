@@ -3,27 +3,96 @@
 
 """convert positive integer to base 2"""
 def binarify(num): 
-
+	storage=[]
+	while num>0:
+		storage.append(str(num%2))
+		num/=2
+	print "".join(storage[::-1])
 
 """convert positive integer to a string in any base"""
 def int_to_base(num, base):
-
+	storage=[]
+	while num>0:
+		storage.append(str(num%base))
+		num/=base
+	print "".join(storage[::-1])
 
 """take a string-formatted number and its base and return the base-10 integer"""
 def base_to_int(string, base):
-
+	string=string[::-1]
+	counter=0
+	for i in range(0,len(string)):
+		counter+=(int(string[i])*base**i)
+	return counter
 
 """add two numbers of different bases and return the sum"""
 def flexibase_add(str1, str2, base1, base2):
+	str1=str1[::-1]
+	counter1=0
+	for i in range(0,len(str1)):
+		counter1+=(int(str1[i])*base1**i)
+	str2=str2[::-1]
+	counter2=0
+	for i in range(0,len(str2)):
+		counter2+=(int(str2[i])*base2**i)
+	return counter1+counter2
 
 
 """multiply two numbers of different bases and return the product"""
 def flexibase_multiply(str1, str2, base1, base2):
-
+	str1=str1[::-1]
+	counter1=0
+	for i in range(0,len(str1)):
+		counter1+=(int(str1[i])*base1**i)
+	str2=str2[::-1]
+	counter2=0
+	for i in range(0,len(str2)):
+		counter2+=(int(str2[i])*base2**i)
+	return counter1*counter2
 
 """given an integer, return the Roman numeral version"""
 def romanify(num):
-
+	final=[]
+	while num>1000:
+		final.append("M"*(num/1000))
+		num-=(num/1000)*1000
+	if num-900>=0:
+		final.append("CM")
+		num-=900
+	while num>=500:
+		final.append("D")
+		num-=500
+		if num-400>=0:
+			final.append("CD")
+			num-=400
+	while num>100:
+		final.append("C"*(num/100))
+		num-=(num/100)*100
+	if num-90>=0:
+		final.append("XC")
+		num-=90
+	while num>=50:
+		final.append("L")
+		num-=50
+		if num-40>=0:
+			final.append("XL")
+			num-=40
+	while num>10:
+		final.append("X"*(num/10))
+		num-=(num/10)*10
+	if num-9>=0:
+		final.append("IX")
+		num-=9
+	while num>=5:
+		final.append("V")
+		num-=5
+		if num-4>=0:
+			final.append("IV")
+			num-=4		
+	while num>1:
+		final.append("I"*(num/1))
+		num-=(num/1)*1
+	print "".join(final)
   
 # Copyright (c) 2014 Matt Dickenson
 # 
