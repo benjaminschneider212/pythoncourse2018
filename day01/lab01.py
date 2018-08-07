@@ -27,28 +27,12 @@ def base_to_int(string, base):
 
 """add two numbers of different bases and return the sum"""
 def flexibase_add(str1, str2, base1, base2):
-	str1=str1[::-1]
-	counter1=0
-	for i in range(0,len(str1)):
-		counter1+=(int(str1[i])*base1**i)
-	str2=str2[::-1]
-	counter2=0
-	for i in range(0,len(str2)):
-		counter2+=(int(str2[i])*base2**i)
-	return counter1+counter2
+	return base_to_int(str1,base1)+base_to_int(str2,base2)
 
 
 """multiply two numbers of different bases and return the product"""
 def flexibase_multiply(str1, str2, base1, base2):
-	str1=str1[::-1]
-	counter1=0
-	for i in range(0,len(str1)):
-		counter1+=(int(str1[i])*base1**i)
-	str2=str2[::-1]
-	counter2=0
-	for i in range(0,len(str2)):
-		counter2+=(int(str2[i])*base2**i)
-	return counter1*counter2
+	return base_to_int(str1,base1)*base_to_int(str2,base2)
 
 """given an integer, return the Roman numeral version"""
 def romanify(num):
