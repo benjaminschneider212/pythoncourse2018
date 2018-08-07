@@ -70,3 +70,39 @@ class Clock(object):
 lit=Clock(12,30)
 lit-25
 print lit
+
+
+####This is what erin did and is way better
+class Clock(object):
+    def __init__(self, hour, minutes):
+        self.minutes = minutes
+        self.hour = hour
+
+    ## Print the time
+    def __str__(self):
+        return "%02d:%02d" %(self.hour,self.minutes)
+    
+    ## Add time
+    ## Don't return anything
+    def __add__(self,minutes):
+        allmins=self.hour*60+self.minutes+minutes
+        leftovermins=allmins%1440
+        self.hour=leftovermins/60
+        self.minutes=leftovermins%60
+
+    ## Subtract time
+    ## Don't return anything
+    def __sub__(self,minutes):
+        self.__add__(-1*minutes)
+
+    ## Are two times equal?
+    def __eq__(self, other):
+        return self.minutes==other.minutes and self.hour==other.hour
+    
+    ## Are two times not equal?
+    def __ne__(self, other):
+        return self.minutes!=other.minutes and self.hour!=other.hour
+
+lit=Clock(12,30)
+lit-25
+print lit
