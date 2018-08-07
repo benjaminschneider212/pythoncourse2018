@@ -6,7 +6,7 @@
 type(2)
 
 def print_int(int):
-  int = 5
+  #int = 5
   print 'Here is an integer: %s' %int ## blue means built-in
 
 
@@ -15,7 +15,7 @@ print_int('b')
 
 ## Check scope by commenting out int = 5 above
 def hi():
-  int = 2
+  #int = 2
   print_int(int)
 
 ## now coment out int = 2 above
@@ -173,10 +173,11 @@ class School():
         else: self.db[student_grade] = [name] #if the key doesn't exist, create it and have kid start new list 
 
     def sort(self): #sorts kids alphabetically and returns them in tuples (because they are immutable)
-        sorted_students={} #sets up empty dictionary to store sorted tuples
+        #sorted_students={} #sets up empty dictionary to store sorted tuples
         for key in self.db.keys(): #loop through each key, automatically ordered
-            sorted_students[key] = tuple(sorted(self.db[key])) #add dictionary entry with key being the grade and the entry the tuple of kids
-        return sorted_students
+            self.db[key] = sorted(self.db[key]) #add dictionary entry with key being the grade and the entry the tuple of kids
+        #self.db=sorted_students
+        return self.db
 
     def grade(self, check_grade):
         if check_grade not in self.db: return None #if the key doesn't exist, there are no kids in that grade: return None
@@ -211,7 +212,7 @@ class Parent():
     self.sex = sex
     self.firstname = firstname
     self.lastname = lastname
-    self.kids = []
+    self.kids = [] #child objects
 
   def role(self):
     if self.sex == "Male":
@@ -420,6 +421,9 @@ class Senator():
     self.bills_voted_on = []
 
   def vote(self, bill, choice):
+    self.choice=choice
+    bill.votes[choice].append(self.name)
+    self.bills_voted_on.append(bill)
     #update the bill object--add the senator's name to the the list of yes/no/abstain
     #update the senator object--add this bill to the bills this senator has voted on
     #print an informative message announcing the vote 
@@ -433,6 +437,18 @@ class Bill():
 
   def result(self):
     ## update and return the "passed" variable to indicate True/False if the bill passed
+    if len(self.votes["yes"])>len(self.votes["no"]):
+      self.passed="Passed"
+      print "The bill has passed!"
+    elif len(self.votes["no"])>len(self.votes["yes"]):
+      self.passed="Failed"
+      print "The bill has failed!"
+    elif len(self.votes["no"])==len(self.votes["yes"]) and len(self.votes["no"])>0:
+      self.passed="Tie"
+      print "Gasp! A tie!"
+    else:
+      self.passed="Pending"
+      print "There are no votes!"
 
 ## should be able to do these things
 jane = Senator("Jane")
