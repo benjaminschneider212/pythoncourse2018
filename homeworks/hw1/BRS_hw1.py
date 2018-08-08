@@ -2,7 +2,7 @@
 class Portfolio(object):
 	def __init__(self,client):
 		self.client=client
-		self.contents = {"cash" : int(0), "mutual funds" : [], "stocks" : []}
+		self.contents = {"cash" : int(0), "mutual funds" : {}, "stocks" : {}}
 		self.log =[]
 
 	def __str__(self):
@@ -23,20 +23,30 @@ class Portfolio(object):
 	def history(self):
 		return self.log
 
-	def buyStock(self,name,quantity):
+	def buyStock(self,name,daytime,quantity):
 		if name.price*quantity>self.contents["cash"]:
+			self.log.append("On %s, %s attempted to purchase %i unit(s) of the stock %s. %i was needed for this transation. Balance at time of transaction: %i" %(daytime,self.client,quantity,name.stock_name,name.price*quantity,self.contents["cash"]))
 			return "Insufficent funds to %i of stock %s. %i needed for this transaction. Current balance: %i"%(quantity,name.stock_name,name.price*quantity,self.contents["cash"])
 		else:
 			self.contents["cash"]-=name.price*quantity
-			self.contents["stock"].append({"%s"%name:[name.price,quantity]})
+			self.contents["stocks"].update({"%s"%name.stock_name:[name.price,quantity]})
+			self.log.append("On %s, %s purchased %i unit(s) of the stock %s for %i. Cash balance after transaction: %i"%(daytime,self.client,quantity,name.stock_name,name.price*quantity,self.contents["cash"]))
 
-	def buyMutualFund(self):
+	def sellStock(self,name,daytime,quantity):
+		if self.contents["stocks"]["%s"%name][1]<quantity:
+			return "You are attempting to sell more stocks than you have"
+		else:
+			newprice=random.uniform(self.contents["stocks"]["%s"%name][0]*.5,self.contents["stocks"]["%s"%name][0]*1.5)
+			self.contents["stocks"].update({"%s"%name.stock_name:[name.price,0]})
+			self.contents["cash"]+=newprice*quantity
+			return self.contents["stocks"]["%s"%name.stock_name][1]-quantity
 
-	def sellMutualFund(self):
+	#def buyMutualFund(self):
 
-	def sellStock(self):
+	#def sellMutualFund(self):
 
-	def withdrawCash(self):
+	#def sellStock(self):
+
 
 class Stock(object):
 	def __init__(self,price,stock_name):
@@ -44,11 +54,11 @@ class Stock(object):
 		self.stock_name=stock_name
 
 	def __str__(self):
-		return "The stock, %s, has a price of %i" %(self.stock,self.price)
+		return "The stock, %s, has a price of %i" %(self.stock_name,self.price)
 
-class MutualFund(object):
-	def __init__(self,stock_name):
-		self.stock=stock_name
+#class MutualFund(object):
+#	def __init__(self,stock_name):
+#		self.stock=stock_name
 
 
 
@@ -62,5 +72,7 @@ print ben
 #ben.withdrawCash(35, "Aug 8, 4:05pm")
 ben.history()
 newstock=Stock(30,"APPL")
-ben.buyStock(newstock,2)
-ben.buyStock(newstock,1)
+ben.buyStock(newstock,"Aug 8 4:30pm",2)
+ben.buyStock(newstock,"Aug 8 4:30pm",1)
+ben.sellStock("APPL","Aug 8, 4:41pm",1)
+
