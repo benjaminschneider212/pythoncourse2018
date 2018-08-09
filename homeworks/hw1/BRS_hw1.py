@@ -33,10 +33,10 @@ class Portfolio(object):
 		if name.price*quantity>self.contents["cash"]:
 			self.log.append("On %s, %s attempted to purchase %i unit(s) of the stock %s. %i was needed for this transation. Balance at time of transaction: %i" %(daytime,self.client,quantity,name.stock_name,name.price*quantity,self.contents["cash"]))
 			return "Insufficent funds to purchase %i of stock %s. %i needed for this transaction. Current balance: %i"%(quantity,name.stock_name,name.price*quantity,self.contents["cash"])
-		#elif self.contents["stocks"]["%s"%name.stock_name][1]>0:
-		#	self.contents["cash"]-=name.price*quantity
-		#	self.contents["stocks"].update({"%s"%name.stock_name:[name.price,quantity+self.contents["stocks"]["%s"%name.stock_name][1]]})
-		#	self.log.append("On %s, %s purchased %i unit(s) of the stock %s for %i. Cash balance after transaction: %i"%(daytime,self.client,quantity,name.stock_name,name.price*quantity,self.contents["cash"]))
+		elif "%s"%name.stock_name in self.contents["stocks"]:
+			self.contents["cash"]-=name.price*quantity
+			self.contents["stocks"].update({"%s"%name.stock_name:[name.price,quantity+self.contents["stocks"]["%s"%name.stock_name][1]]})
+			self.log.append("On %s, %s purchased %i unit(s) of the stock %s for %i. Cash balance after transaction: %i"%(daytime,self.client,quantity,name.stock_name,name.price*quantity,self.contents["cash"]))
 		else:
 			self.contents["cash"]-=name.price*quantity
 			self.contents["stocks"].update({"%s"%name.stock_name:[name.price,quantity]})
@@ -59,6 +59,10 @@ class Portfolio(object):
 		if quantity>self.contents["cash"]:
 			self.log.append("On %s, %s attempted to purchase %i unit(s) of the mutual fund %s. $%i was needed for this transation. Balance at time of transaction: %i" %(daytime,self.client,quantity,fund.name,quantity,self.contents["cash"]))
 			return "Insufficent funds to purchase %i of mutual fund %s. $%i needed for this transaction. Current balance: %i"%(quantity,fund.name,quantity,self.contents["cash"])
+		elif "%s"%fund.name in self.contents["mutual funds"]:
+			self.contents["cash"]-=quantity
+			self.contents["mutual funds"].update({"%s"%fund.name:[quantity+self.contents["mutual funds"]["%s"%fund.name][0]]})
+			self.log.append("On %s, %s purchased %i unit(s) of the mutual fund %s. Cash balance after transaction: %r"%(daytime,self.client,quantity,fund.name,self.contents["cash"]))
 		else:
 			self.contents["cash"]-=quantity
 			self.contents["mutual funds"].update({"%s"%fund.name:[quantity]})
@@ -97,11 +101,12 @@ ben=Portfolio("Benjamin")
 ben.addCash(50)
 ben.withdrawCash(100)
 ben.withdrawCash(35)
-ben.addCash(150)
+ben.addCash(250)
 newstock=Stock(30,"APPL")
 ben.buyStock(newstock,10)
 ben.buyStock(newstock,3)
-ben.sellStock("APPL",4)
+ben.buyStock(newstock,1)
+ben.sellStock("APPL",5)
 ben.sellStock("APPL",2)
 newfund=MutualFund("Lit")
 ben.buyMutualFund(newfund,200)
