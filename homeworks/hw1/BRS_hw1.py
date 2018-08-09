@@ -77,17 +77,17 @@ class Portfolio(object):
 			self.log.append("On %s, %s sold %i unit(s) of the mutual fund %s. The original price was $1 and the new price was %r. Cash Balance at time of transation: %r" %(daytime,self.client,quantity,name,newprice,self.contents["cash"]))
 
 
-class Stock(object):
+class Stock(object): #the stock class only has two attributes
 	def __init__(self,price,stock_name):
 		self.price=price
-		self.stock_name=stock_name
+		self.stock_name=stock_name #the attributes are name and price
 
-	def __str__(self):
+	def __str__(self): #I threw in a little print functin but this is pretty uninspired
 		return "The stock, %s, has a price of %i" %(self.stock_name,self.price)
 
-class MutualFund(object):
+class MutualFund(object): #the mutual fund class only has one attribute
 	def __init__(self,fund_name):
-		self.name=fund_name
+		self.name=fund_name #the fund_name is the only argument and it is saved as name
 
 
 
