@@ -7,7 +7,11 @@
 ## Syntax errors ## SyntaxError: invalid syntax
 if x == 1:
     print "x equals 1"
+<<<<<<< HEAD
 else#:
+=======
+else:
+>>>>>>> upstream/master
     print "x does not equal 1"
 
 ## Wrong indentation.. ipython helps me here.
@@ -16,12 +20,20 @@ for i in range(1,5):
 
 ## colors help, too
 x = 0
+<<<<<<< HEAD
 While x < 5: #w is capitalized
+=======
+while x < 5:
+>>>>>>> upstream/master
     x += 1
 print x #this should be indented
 
 ## brackets and parentheses
+<<<<<<< HEAD
 print (10*2) + (5*3)) #extra parentheses
+=======
+print (10*2) + (5*3)
+>>>>>>> upstream/master
 
 
 
@@ -31,19 +43,35 @@ print 5/ #ZeroDivisionError: integer division or modulo by zero
 
 
 ## Another way to think about runtime vs syntax errors
+<<<<<<< HEAD
 def runtime_error(): #this will be read in
     print 5/0
 
 def syntax_error(): #this cant even be read in
     If 2 < 4:
+=======
+def runtime_error():
+    a = 5/0
+    print a
+
+runtime_error()
+
+def syntax_error():
+    if 2 < 4:
+>>>>>>> upstream/master
         print "hi"
 
 
 ## Semantic errors ##
 
 ## I want to print all numbers in this list
+<<<<<<< HEAD
 l = [10, 20, 30, 40] #python states iterating at 0 duh
 for i in range(1,4):
+=======
+l = [10, 20, 30, 40]
+for i in range0,4):
+>>>>>>> upstream/master
     print l[i]
 
 
@@ -91,7 +119,7 @@ except:
 ## Add more nuance for things we might expect
 def divide_two_things(thing1, thing2):
     try:
-        thing1 / thing2
+        out = float(thing1) / thing2
     except TypeError:
         print "Make sure you have two numbers, returning 0."
         out = 0
@@ -101,8 +129,8 @@ def divide_two_things(thing1, thing2):
     except:
         print "I caught an unexpected error! Returning 0."
         out = 0
-    else:
-        out = thing1 / thing2
+    # else:
+    #     out = thing1 / thing2
     finally:
         return out
 
@@ -126,7 +154,13 @@ newlist = [divide_two_things(i,j) for i,j in zip(list1, list2)]
 ## Let's say we don't care about floats... rounding down is cool.
 ## What type of error would occur?  How to fix?
 def print_integer(integer):
-    return "Here is my integer: " + str(integer)
+    try:
+        integer / 1
+    if TypeError:
+        pass
+    else:
+        return "Here is my integer: " + str(integer)
+    
 
 print_integer(2)
 print_integer('22')
@@ -138,7 +172,7 @@ def print_integer(integer):
     try:
         int(integer)
     except ValueError:
-        print "Put in a single number."
+        pass
     else:
         print "Here is my integer: " + str(integer)
 
@@ -193,10 +227,10 @@ class CustomException(Exception):
   def __init__(self, value):
     self.value = value
   def __str__(self):
-    return self.value
+    return str(self.value)
 
 ## use
-raise CustomException("That's wrong!!")
+raise CustomException(3)
     
 
 ## Our custom exception is the integer cannot be 10, 20, or 30.
@@ -253,16 +287,26 @@ else:
 
 
 ## check all digits 2-9
-for n in range(2, 10):
+for n in range(2, 30):
     ## check all digits < it
     for x in range(2, n):
         if n % x == 0:
             print "%d equals %d * %d" % (n, x, n//x)
-        else:
-            print "%d is a prime number" % n
+            break
+    else:
+        print "%d is a prime number" % n
 
 ## How do we fix this loop?
 ## We have 2 semantic errors:
 ## Printing message for non-prime numbers
 ## Printing it several times!
+
+
+
+
+
+
+
+
+
 

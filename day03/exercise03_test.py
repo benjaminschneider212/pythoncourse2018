@@ -1,5 +1,9 @@
 import unittest
+<<<<<<< HEAD
 from exercise03_ben import *
+=======
+from exercise03_erin import *
+>>>>>>> upstream/master
 
 class exerciseTests(unittest.TestCase):
     
