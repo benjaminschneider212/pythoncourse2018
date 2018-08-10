@@ -4,37 +4,37 @@
 
 ## Types of errors ------------------------------------------------
 
-## Syntax errors ## 
+## Syntax errors ## SyntaxError: invalid syntax
 if x == 1:
     print "x equals 1"
-else
+else#:
     print "x does not equal 1"
 
 ## Wrong indentation.. ipython helps me here.
 for i in range(1,5):
-  print i
+    print i
 
 ## colors help, too
 x = 0
-While x < 5:
+While x < 5: #w is capitalized
     x += 1
-print x
+print x #this should be indented
 
 ## brackets and parentheses
-print (10*2) + (5*3))
+print (10*2) + (5*3)) #extra parentheses
 
 
 
 ## Runtime errors ##
-print a 
-print 5/0
+print a #NameError: name 'a' is not defined
+print 5/ #ZeroDivisionError: integer division or modulo by zero
 
 
 ## Another way to think about runtime vs syntax errors
-def runtime_error():
+def runtime_error(): #this will be read in
     print 5/0
 
-def syntax_error():
+def syntax_error(): #this cant even be read in
     If 2 < 4:
         print "hi"
 
@@ -42,7 +42,7 @@ def syntax_error():
 ## Semantic errors ##
 
 ## I want to print all numbers in this list
-l = [10, 20, 30, 40]
+l = [10, 20, 30, 40] #python states iterating at 0 duh
 for i in range(1,4):
     print l[i]
 

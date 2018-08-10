@@ -1,4 +1,5 @@
 ## Fill in the following methods for the class 'Clock'
+import random
 
 class Clock(object):
     def __init__(self, hour, minutes):

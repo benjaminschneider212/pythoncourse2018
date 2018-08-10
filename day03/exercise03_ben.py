@@ -5,12 +5,10 @@ def count_vowels(word):
 	vowellist=["a","e","i","o","u"]
 	counter=0
 	try:
-		for i in range(0,len(word)):
-			if word[i] in "%s"%vowellist:
+		for letter in word:
+			if letter in "%s"%vowellist:
 				counter+=1
-			else:
-				continue
 	except TypeError:
-		return "That aint a word fool!"
+		print "That ain't a word, fool!"
+		raise TypeError
 	return counter
-
