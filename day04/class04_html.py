@@ -13,7 +13,7 @@ import time
 import os
 
 ## Open a web page
-web_address = 'https://polisci.wustl.edu/faculty/specialization'
+web_address = 'http://polisci.wustl.edu/faculty/specialization'
 web_page = urllib2.urlopen(web_address)
 
 ## Parse it
@@ -27,7 +27,7 @@ soup.find_all('h3')
 
 ## Get the script of a certain tag
 fields = soup.find_all('h3') ## list of html entries
-[i.text for i in fields] ## grab just the text from each one
+[i.text for i in fields] ## grab just them text from each one
 
 # Get the attributes
 all_a_tags = soup.find_all('a')
@@ -91,12 +91,10 @@ def download_page(address, filename, wait = 5):
 	else:
 		print "Can't overwrite file" + filename
 
-download_page('https://polisci.wustl.edu/faculty/specialization', "polisci_ppl.html")
+download_page('http://polisci.wustl.edu/faculty/specialization', "polisci_ppl.html")
 
-## You can also parse a page that is saved on your computer
-## Useful to scrape now, parse later.
-with open('polisci_ppl.html') as f:
-  myfile = f.read()
+## You can also parse a page that is saved on your computer	
+	
   
 soup = BeautifulSoup(myfile)
 soup.prettify()

@@ -27,7 +27,7 @@ def reverse(txt):
 		output= "This isnt a string"
 	except TypeError:
 		output="This isnt a string"
-	return output	
+	return output
 
 
 ## reverse word order in string

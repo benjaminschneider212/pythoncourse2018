@@ -64,15 +64,15 @@ with open('test_writecsv.csv', 'rb') as f:
     mydat.append(row)
 print mydat
 
-    
+
 ## Adding column names
 with open('test_csvfields.csv', 'wb') as f:
   my_writer = csv.DictWriter(f, fieldnames = ("A", "B"))
   my_writer.writeheader()
   for i in range(1, 100):
     my_writer.writerow({"B":i, "A":i-1})
-    
-    
+
+
 with open('test_csvfields.csv', 'rb') as f:
   my_reader = csv.DictReader(f)
   for row in my_reader:
