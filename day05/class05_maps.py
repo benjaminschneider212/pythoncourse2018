@@ -2,10 +2,11 @@
 #### Googlemaps API
 
 # pip install googlemaps
-## https://console.developers.google.com/apis/credentials?project=_
+## quit
 ## need maps and distance APIs enabled
 import imp
-imported_items = imp.load_source('pythoncourse2018-prep', '../../pythoncourse2018-prep/day05/erinkeys/googlekeys.py')
+imported_items = imp.load_source('pythoncourse2018', '../../documents/googlekeys.py')
+imported_items = imp.load_source('day05', '../../../googlekeys.py') #this one is for me
 gmaps = imported_items.gmaps
 
 whitehouse = '1600 Pennsylvania Avenue, Washington, DC'
@@ -44,8 +45,6 @@ from gmplot import gmplot
 ## location and zoom level
 ## can use latitutde and longitude instead
 plot1 = gmplot.GoogleMapPlotter.from_geocode("St. Louis", 13)
-
-
 
 stl_places = ["Forest Park, St. Louis",
 "Missouri Botanical Garden, St. Louis",
