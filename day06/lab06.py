@@ -9,19 +9,47 @@ with open("obama-nh.txt", "r") as f:
 ## (although you ~might~ think you could do something like
 ## [l for l in obama if "the" not in l]
 
-
-
+pattern = re.compile(r'the\W+')
+pattern2 = re.compile(r'The\W+')
+lit=[]
+for line in obama:
+ 	if pattern.search(line):
+		pass
+	elif pattern2.search(line):
+		pass
+  	else:
+		lit.append(line)
 
 # TODO: print lines that contain a word of any length starting with s and ending with e
 
+with open("obama-nh.txt", "r") as f:
+	obama = f.readlines()
 
+pattern = re.compile(r'\W+s[a-z]+e\W')
+pattern2 = re.compile(r'\W*S[a-z]+e\W')
+lit=[]
+for line in obama:
+ 	if pattern.search(line):
+		lit.append(line)
+	elif pattern2.search(line):
+		lit.append(line)
+  	else:
+		pass
 
 
 ## TODO: Print the date input in the following format
 ## Month: MM
 ## Day: DD
 ## Year: YY
+
 date = raw_input("Please enter a date in the format MM.DD.YY: ")
+
+pattern=re.compile(r'(\d*)\.(\d*)\.(\d*)')
+search = pattern.search(date)
+print "Month: %r \nDay: %r \nYear: %r"%(search.groups(0)[0],search.groups(0)[1],search.groups(0)[2])
+
+
+
 
 
 

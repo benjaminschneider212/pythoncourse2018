@@ -8,7 +8,7 @@ import re
 ## read in example text
 ## remember, readlines makes a list of each line break in file
 with open("obama-nh.txt", "r") as f:
-	text = f.readlines()
+	text = f.readlines() #can just do f.read
 
 ## How is this file structured?
 ## How does it impact our 'text' object?
@@ -72,6 +72,7 @@ re.findall(r"(Yes) we can", alltext)
 
 ## Exercise: How would we grab 9/11 as it appears in text?
 
+re.findall(r"\d{1,2}/\d{1,2}", alltext)
 
 
 ## Explain what's happening:
@@ -127,10 +128,10 @@ mline = 'bin\nban\ncan'
 
 ## ^ is start of the string
 ## looking for b
-pattern = re.compile(r'^b\w*')
+pattern = re.compile(r'^b\w*') #this looks at the beginning of a string
 pattern.findall(mline)
 
-pattern = re.compile(r'^b\w*', re.MULTILINE)
+pattern = re.compile(r'^b\w*', re.MULTILINE) #this looks at the beginning of all lines (includes ban too!)
 pattern.findall(mline)
 
 ## Now back to the speech as a single string...
@@ -142,7 +143,7 @@ re.findall(r'^b\w*', alltext)
 ## Exercise
 ## Check if a line ends in a period
 ## How is this working?
-re.findall(r'^.*\.$', alltext, re.MULTILINE)
+re.findall(r'^.*\.$', alltext, re.MULTILINE) #the $ is the end of the string
 
 
 

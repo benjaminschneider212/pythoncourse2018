@@ -7,7 +7,7 @@
 import imp
 
 ## first arg is folder name, second arg is navigating to file
-meetup = imp.load_source('pythoncourse2018-prep', '../../pythoncourse2018-prep/day05/erinkeys/meetupkeys.py')
+meetup = imp.load_source('day05', '../../../meetupkey.py')
 api = meetup.client
 
 ## methods we can use
@@ -68,8 +68,9 @@ polgroups = api.GetFindGroups({"zip" : "63112", "text" : "political"})
 len(polgroups)
 
 [g.members for g in polgroups]
-[g.urlname for g in polgroups]
+[g.urlname for g in polgroups
 
+polgroups[10]
 
 
 simgroups = api.GetGroupSimilarGroups({"urlname" : "Great-Conversations"})
