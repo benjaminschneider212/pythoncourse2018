@@ -2,14 +2,22 @@
 #### Googlemaps API
 
 # pip install googlemaps
+<<<<<<< HEAD
 ## quit
 ## need maps and distance APIs enabled
 import imp
 imported_items = imp.load_source('pythoncourse2018', '../../documents/googlekeys.py')
 imported_items = imp.load_source('day05', '../../../googlekeys.py') #this one is for me
+=======
+## https://console.developers.google.com/apis/credentials?project=_
+## need geocoding and distance matrix APIs enabled
+import imp
+imported_items = imp.load_source('pythoncourse2018', '../../pythoncourse2018-prep/day05/erinkeys/googlekeys.py')
+
+>>>>>>> upstream/master
 gmaps = imported_items.gmaps
 
-whitehouse = '1600 Pennsylvania Avenue, Washington, DC'
+whitehouse = 'The White House'
 location = gmaps.geocode(whitehouse)
 location ## again, sooo much data 
 location[0].keys()
@@ -33,7 +41,6 @@ washu = washu[0]['geometry']['location']
 
 distance = gmaps.distance_matrix(duke, latlong)
 print distance['rows'][0]['elements'][0]['distance']['text']
-print distance['rows'][0]['elements'][0]['distance']['value']
 
 
 
