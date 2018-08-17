@@ -9,13 +9,11 @@ with open("obama-nh.txt", "r") as f:
 ## (although you ~might~ think you could do something like
 ## [l for l in obama if "the" not in l]
 
-pattern = re.compile(r'the\W+')
-pattern2 = re.compile(r'The\W+')
+pattern = re.compile(r'[Tt]he\W+')
+
 lit=[]
 for line in obama:
  	if pattern.search(line):
-		pass
-	elif pattern2.search(line):
 		pass
   	else:
 		lit.append(line)
@@ -25,8 +23,7 @@ for line in obama:
 with open("obama-nh.txt", "r") as f:
 	obama = f.readlines()
 
-pattern = re.compile(r'\W+s[a-z]+e\W')
-pattern2 = re.compile(r'\W*S[a-z]+e\W')
+pattern = re.compile(r'\W+[Ss][a-z]+e\W')
 lit=[]
 for line in obama:
  	if pattern.search(line):
