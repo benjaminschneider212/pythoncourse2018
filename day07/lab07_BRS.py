@@ -18,18 +18,18 @@ def gcd(x, y):
 ## Exercise 2
 ## Write a function using recursion that returns prime numbers less than 121
 def find_primes(me = 121, primes = []):
-	lit=0
+	iscomposite=0
 	if me<3:
 		primes.append(2)
 		return primes
 	else:
 		for i in range(3,me):
 			if me%i==0:
-				lit=1
+				iscomposite=1
 				break
 			elif me%i!=0:
 				pass
-		if lit==1:
+		if iscomposite==1:
 			me-=2
 		else:
 			primes.append(me)
