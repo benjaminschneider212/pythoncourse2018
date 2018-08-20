@@ -24,8 +24,9 @@ for i in range(35):
 ## Exercise:
 ## Can you write a recursive function to print n!
 
+
+
 def factorial(n):
-	## if base case:
-		## return something
-	## else:
-		## return a recursive call
+	if n <=2:
+		return n
+	return factorial(n-1)*n
