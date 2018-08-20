@@ -1,7 +1,10 @@
 # pip install nltk
 
 import nltk
+<<<<<<< HEAD
 ssl._create_default_https_context = ssl._create_unverified_context 
+=======
+>>>>>>> upstream/master
 nltk.download('names')
 from nltk.corpus import names
 import random
@@ -63,6 +66,9 @@ classifier = nltk.NaiveBayesClassifier.train(train_set)
 print nltk.classify.accuracy(classifier, test_set)
 
 
+classifier.show_most_informative_features(100)
+
+
 ## Worse? Better? How can we refine?
 ## Lets look at the errors from this model
 ## and see if we can do better
@@ -82,6 +88,19 @@ for (label, guess, prob, name) in sorted(errors):
 
 ## What should we do here?
 def g_features3(name):
+  features = {}
+  if name[-2:] == "ie" or name[-1] == "y":
+    features["last_ie"] = True
+  else:
+    features["last_ie"] = False
+
+  if name[-1] == "k":
+    features["last_k"] = True
+  else:
+    features["last_k"] = False
+
+  return features
+
 
 
 train_set = [(g_features3(n), g) for (n,g) in train_names]
@@ -125,15 +144,15 @@ def document_features(document):
 print document_features(movie_reviews.words('pos/cv957_8737.txt'))
 
 ## Now we have tuple of ({features}, label)
-train_docs = documents[:1000]
-test_docs = documents[1000:]
+train_docs = documents[:500]
+test_docs = documents[1000:1500]
 train_set = [(document_features(d), c) for (d,c) in train_docs]
 test_set = [(document_features(d), c) for (d,c) in test_docs]
 classifier = nltk.NaiveBayesClassifier.train(train_set)
 
-print nltk.classify.accuracy(classifier, test_set)
+print nltk.classify.accuracy(classifier, test_set[:50])
 
-classifier.show_most_informative_features(5)
+classifier.show_most_informative_features(1000)
 
 # Copyright (c) 2014 Matt Dickenson
 # 

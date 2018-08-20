@@ -7,7 +7,11 @@
 import imp
 
 ## first arg is folder name, second arg is navigating to file
+<<<<<<< HEAD
 meetup = imp.load_source('day05', '../../../meetupkey.py')
+=======
+meetup = imp.load_source('pythoncourse2018', '../../pythoncourse2018-prep/day05/erinkeys/meetupkeys.py')
+>>>>>>> upstream/master
 api = meetup.client
 
 ## methods we can use
