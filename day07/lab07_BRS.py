@@ -34,4 +34,4 @@ def find_primes(me = 121, primes = []):
 		else:
 			primes.append(me)
 			me-=2
-		find_primes(me)
+		return find_primes(me)
