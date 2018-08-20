@@ -19,7 +19,8 @@ def gcd(x, y):
 ## Write a function using recursion that returns prime numbers less than 121
 def find_primes(me = 121, primes = []):
 	lit=0
-	if me<1:
+	if me<3:
+		primes.append(2)
 		print "done"
 	else:
 		for i in range(2,me):
