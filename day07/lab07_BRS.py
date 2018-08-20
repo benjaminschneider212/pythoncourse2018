@@ -21,9 +21,9 @@ def find_primes(me = 121, primes = []):
 	lit=0
 	if me<3:
 		primes.append(2)
-		print "done"
+		return primes
 	else:
-		for i in range(2,me):
+		for i in range(3,me):
 			if me%i==0:
 				lit=1
 				break
@@ -35,4 +35,3 @@ def find_primes(me = 121, primes = []):
 			primes.append(me)
 			me-=2
 		find_primes(me)
-	return primes
