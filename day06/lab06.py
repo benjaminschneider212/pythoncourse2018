@@ -41,13 +41,12 @@ for line in obama:
 
 date = raw_input("Please enter a date in the format MM.DD.YY: ")
 
-pattern=re.compile(r'(\d*)\.(\d*)\.(\d*)')
+pattern=re.compile(r"(\d\d)\.(\d\d)\.(\d\d)")
 search = pattern.search(date)
-print "Month: %r \nDay: %r \nYear: %r"%(search.groups(0)[0],search.groups(0)[1],search.groups(0)[2])
+print "Month: %r \nDay: %r \nYear: %r"%(search.group(1),search.group(2),search.group(3))
 
-
-
-
+string="Benim adım Bünyamın"
+pattern = re.compile(r'\w*ı\w*')
 
 
 

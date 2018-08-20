@@ -1,7 +1,8 @@
 # pip install nltk
 
 import nltk
-#nltk.download('names')
+ssl._create_default_https_context = ssl._create_unverified_context 
+nltk.download('names')
 from nltk.corpus import names
 import random
 
