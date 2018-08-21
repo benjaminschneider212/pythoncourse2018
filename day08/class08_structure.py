@@ -38,15 +38,17 @@ df_array.head()
 df_array.head(2)
 df_array.tail()
 
-df.columns
+df_array.columns
 
-df.describe()
+df_array.describe()
 
-df.sort_values(by = "A")
+df_array.sort_values(by = "A")
 
 
 
 ## indexing
+
+df=df_array
 
 df["A"] ## column A
 
@@ -56,11 +58,11 @@ df[0:4] ## first 4 rows
 
 df.loc[:,["C"]] ## uses labels
 
-df.loc[1:3:,["C"]]
+df.loc[1:3,["C"]]
 
 df.at[1,"A"]
 
-df.iloc[1:2, 1:2] ## uses integer positions
+df.iloc[1:3, 1:3] ## uses integer positions
 
 df.iloc[1:2, 1:2]
 
@@ -93,6 +95,8 @@ my_square_list = [i**2 for i in range(0,10)]
 ## map is like apply in R
 ## lambda creates an anonymous function
 my_square_list = map((lambda x: x**2), range(0,10))
+
+my_list=range(0,10)
 
 ## another way
 def sqr(x): return x**2
@@ -142,7 +146,7 @@ for number, letter in enumerate(letters):
 	print "%s is the letter with index %s" %(letter,number)
 
 ## more generally, iterate like this with any tuple
-for a, b, c in [(1, 2, 3)]:
+for a, b, c in [(1, 2, 3),(10,11,12)]:
 	print a
 	print b
 	print c
@@ -163,7 +167,7 @@ for key, value in d.items():
 		print key
 
 for k, v in d.items():
-	print "%s is the letter number %s" %(letter, number)
+	print "%s is the letter number %s" %(k, v)
 
 newletter = {'A': 27}
 d.update(newletter)
