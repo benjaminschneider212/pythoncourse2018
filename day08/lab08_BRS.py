@@ -32,39 +32,78 @@ print sum([len(ring[node]) for node in ring.keys()])/2
 ## TODO: create a square graph with 256 nodes using the makeLink function
 ## TODO: define a function countEdges
 
-square = {} 
-for i in range(0,16):
-  if (i+4)%4==0:
-    square=makeLink(square,i,i+1)
-  elif i%4==3:
-    square=makeLink(square,i,i-1)
-  else:
-    square=makeLink(square,i,i-1)
-    square=makeLink(square,i,i+1)
-  if i/4==0:
-    square=makeLink(square,i,i+4)
-  elif i/4==3:
-    square=makeLink(square,i,i-4)
-  else:
-    square=makeLink(square,i,i+4)
-    square=makeLink(square,i,i-4)
+# square = {} 
+# for i in range(0,16):
+#   if (i+4)%4==0:
+#     square=makeLink(square,i,i+1)
+#   elif i%4==3:
+#     square=makeLink(square,i,i-1)
+#   else:
+#     square=makeLink(square,i,i-1)
+#     square=makeLink(square,i,i+1)
+#   if i/4==0:
+#     square=makeLink(square,i,i+4)
+#   elif i/4==3:
+#     square=makeLink(square,i,i-4)
+#   else:
+#     square=makeLink(square,i,i+4)
+#     square=makeLink(square,i,i-4)
 
-bigsquare = {} 
-for i in range(0,255):
-  if (i+16)%16==0:
-    bigsquare=makeLink(bigsquare,i,i+1)
-  elif i%16==15:
-    bigsquare=makeLink(bigsquare,i,i-1)
-  else:
-    bigsquare=makeLink(bigsquare,i,i-1)
-    bigsquare=makeLink(bigsquare,i,i+1)
-  if i/16==0:
-    bigsquare=makeLink(bigsquare,i,i+16)
-  elif i/16==15:
-    bigsquare=makeLink(bigsquare,i,i-16)
-  else:
-    bigsquare=makeLink(bigsquare,i,i+16)
-    bigsquare=makeLink(bigsquare,i,i-16)
+
+# square = {} 
+# for i in range(0,16):
+#   if i%4!=3:
+#     square=makeLink(square,i,i+1)
+#   else:
+#     pass
+#   if i/4!=3:
+#     square=makeLink(square,i,i+4)
+#   else:
+#     pass
+
+# bigsquare = {} 
+# for i in range(0,256):
+#   if (i+16)%16==0:
+#     bigsquare=makeLink(bigsquare,i,i+1)
+#   elif i%16==15:
+#     bigsquare=makeLink(bigsquare,i,i-1)
+#   else:
+#     bigsquare=makeLink(bigsquare,i,i-1)
+#     bigsquare=makeLink(bigsquare,i,i+1)
+#   if i/16==0:
+#     bigsquare=makeLink(bigsquare,i,i+16)
+#   elif i/16==15:
+#     bigsquare=makeLink(bigsquare,i,i-16)
+#   else:
+#     bigsquare=makeLink(bigsquare,i,i+16)
+#     bigsquare=makeLink(bigsquare,i,i-16)
+
+# bigsquare = {} 
+# for i in range(0,256):
+#   if i%16!=15:
+#     bigsquare=makeLink(bigsquare,i,i+1)
+#   else:
+#     pass
+#   if i/16!=15:
+#     bigsquare=makeLink(bigsquare,i,i+16)
+#   else:
+#     pass
+
+import math
+def makeSquare(n):
+  marker=int(math.sqrt(n))
+  square={}
+  for i in range(0,n):
+    if i%marker!=marker-1:
+      square=makeLink(square,i,i+1)
+    else:
+      pass
+    if i/marker!=marker-1:
+      square=makeLink(square,i,i+marker)
+    else:
+      pass
+  return square
+
 
 def countEdges(square):
   connectioncount=0
@@ -72,12 +111,7 @@ def countEdges(square):
     connectioncount+=len(square[node])
   return connectioncount/2
 
-countEdges(square)
-countEdges(bigsquare)
-
-
-
-
+countEdges(makeSquare(256))
 
 
 
