@@ -27,6 +27,22 @@ for i in range(35):
 
 
 def factorial(n):
+<<<<<<< HEAD
 	if n <=2:
 		return n
 	return factorial(n-1)*n
+=======
+	if n == 0:
+		return 1
+	return factorial(n-1) * n
+	## if base case:
+		## return something
+	## else:
+		## return a recursive call
+
+
+		
+
+
+
+>>>>>>> upstream/master
