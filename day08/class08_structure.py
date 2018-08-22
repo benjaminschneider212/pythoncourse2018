@@ -48,7 +48,11 @@ df_array.sort_values(by = "A")
 
 ## indexing
 
+<<<<<<< HEAD
 df=df_array
+=======
+df = df_array
+>>>>>>> upstream/master
 
 df["A"] ## column A
 
@@ -59,12 +63,18 @@ df[0:4] ## first 4 rows
 df.loc[:,["C"]] ## uses labels
 
 df.loc[1:3,["C"]]
+<<<<<<< HEAD
 
 df.at[1,"A"]
+=======
+>>>>>>> upstream/master
 
 df.iloc[1:3, 1:3] ## uses integer positions
 
 df.iloc[1:2, 1:2]
+
+
+df.at[1,"A"]
 
 ## a lot more.....
 
@@ -89,12 +99,16 @@ my_square_list=[]
 for i in range(0,10):
 	my_square_list.append(i**2)
 
+
 ## one line loop!
-my_square_list = [i**2 for i in range(0,10)]
+my_square_list = [i**2 for i in range(10)]
 
 ## map is like apply in R
 ## lambda creates an anonymous function
-my_square_list = map((lambda x: x**2), range(0,10))
+my_square_list = map(lambda x: x**2, range(0,10))
+
+## like in R...
+## sapply(0:9, function(x) x^2)
 
 my_list=range(0,10)
 
@@ -103,7 +117,9 @@ def sqr(x): return x**2
 
 map(sqr, range(0,10))
 
+
 ## zip makes list of item-wise tuples
+my_list = range(0,10)
 zipped = zip(my_list, my_square_list, map(lambda x: x**3, range(0,10)))
 unzipped = zip(*zipped)
 
@@ -118,11 +134,13 @@ filter(lambda x: x < 0, range(-5, 5))
 
 x = [3,6,1,2,8,3,5,7]
 
+x = x.reverse()
+
 x.reverse() 
 x[2]
 x.sort() 
-x.append(10)
-x.extend(my_square_list)
+x.append([10, 12, 14])
+x.extend([11, 12, 14])
 x.insert(1,'+')
 x.remove('+')  #Removes the first occurence '+'
 x.remove(3)
@@ -146,7 +164,11 @@ for number, letter in enumerate(letters):
 	print "%s is the letter with index %s" %(letter,number)
 
 ## more generally, iterate like this with any tuple
+<<<<<<< HEAD
 for a, b, c in [(1, 2, 3),(10,11,12)]:
+=======
+for a,b,c in [(1, 2, 3), (10,11,12)]:
+>>>>>>> upstream/master
 	print a
 	print b
 	print c
@@ -155,6 +177,7 @@ for a, b, c in [(1, 2, 3),(10,11,12)]:
 
 ## Dictionary ----------------------------------------------------
 
+zip(letters,range(1,27))
 d = dict(zip(letters,range(1,27)))
 
 d['a']
@@ -173,9 +196,14 @@ newletter = {'A': 27}
 d.update(newletter)
 
 new_a_value = {'a':'first'}
-d.update(new_a_value)
-d['z'] = 'last'
+d.update(new_a_value) ## overwrites
+d['z'] = 'last' ## overwrites
 
+d["A"].append("hi")
+u = {"A" : [29, 30, 27]}
+d.update(u)
+
+d["b"] += "hi"
 
 
 ## Tree ----------------------------------------------------
@@ -193,8 +221,10 @@ class Node():
 	def __str__(self):
 		if self.children != (None,None):
 			return "Node value: %s \n left child: \n %s \n right child: \n %s" %(self.value,self.children[0],self.children[1])
-		else: return "Node value: %s" %self.value	
-	
+		else: return "Node value: %s" % self.value	
+
+
+
 class Tree():
 	def __init__(self, root=None):
 		self.root = root
@@ -222,5 +252,20 @@ mytree.add_branch(node1,[node2,node3])
 mytree.add_branch(node2,[node4,node5])
 
 
+
+
+x = range(1, 101) ## # of elements in list
+y = range(1, 101) ## time
+plt.subplots_adjust(left = .13, right = .95, top = .9, bottom = .3)
+plt.plot(x, y)
+plt.legend(['hi', 'bye'], loc = "upper left", prop = {"size":10})
+plt.ylabel("Y")
+plt.xlabel("X")
+plt.title("The Effect of Different Sort Algorithms on Runtime")
+txt = """
+Maybe a description here
+"""
+plt.figtext(.5, .05, txt, fontsize = 10, ha = "center")
+plt.savefig('plot.pdf')
 
 
