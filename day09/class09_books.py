@@ -1,21 +1,21 @@
 # book_table
-# title					author_id		main_character				year
-# "War and Peace"			1			"Pierre Bezukhov"			1869
-# "Anna Karenina"			1			"Anna Karenina"				1877
-# "Tale of Two Cities"      2			"Alexandre Manette"			1859
-# "Crime and Punishment"	3			"Raskolnikov"				1866
+# title					    2author_id		main_character				year
+# "War and Peace"			    1			 "Pierre Bezukhov"			1869
+# "Anna Karenina"			    1			 "Anna Karenina"				1877
+# "Tale of Two Cities"    2			 "Alexandre Manette"	  1859
+# "Crime and Punishment"	3			 "Raskolnikov"				  1866
  
 # author_table
 # author_id				author_name			country_id
-# 1						Tolstoy				1
-# 2						Dickens				2
-# 3						Dostoevsky			1
-# 4						Darwin				1
+# 1						       Tolstoy				1
+# 2						       Dickens				2
+# 3						       Dostoevsky			1
+# 4						       Darwin		  		1
  
 # country_table
 # country_id				country_name			capital
-# 1							Russia					Moscow
-# 2							England					London
+# 1							      Russia					 Moscow
+# 2							      England					 London
 
 import sqlalchemy
 
